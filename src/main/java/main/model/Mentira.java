@@ -103,10 +103,13 @@ public class Mentira {
 		this.inocentes = inocentes;
 	}
 
+	@Override
 	public String toString() {
 		String resultado = "";
-		return "Mentira [id=" + id + ", nombre=" + nombre + ", textoMentira=" + textoMentira + ", complices="
-				+ complices + ", inocentes=" + inocentes + "]";
+		resultado = " Nombre: " + nombre + "\nTexto:\n " + textoMentira + "Complices: \n"
+				+ complices + "Inocentes: \n" + inocentes + " Categoria: " + categoria + " ";
+		return resultado;
 	}
 
+	
 }

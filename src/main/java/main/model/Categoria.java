@@ -21,7 +21,7 @@ public class Categoria {
 	@Column(name = "categoria")
 	Categorias categoria;
 
-	@OneToMany(cascade = { CascadeType.MERGE },mappedBy="categoria",fetch=FetchType.EAGER)
+	@OneToMany(cascade = { CascadeType.MERGE }, mappedBy = "categoria", fetch = FetchType.EAGER)
 	private Set<Mentira> mentiras;
 
 	public Categoria() {
@@ -42,7 +42,12 @@ public class Categoria {
 	}
 
 	public String toString() {
-		return "Categoria [categoria=" + categoria + "]";
+		String resultado = "";
+		resultado = "Categoria: " + categoria + "   ===>";
+		for (Mentira mentira : mentiras) {
+			resultado += mentira;
+		}
+		return resultado;
 	}
 
 }

@@ -92,8 +92,13 @@ public class Usuario {
 	}
 
 	public String toString() {
-		return "Usuario [id=" + id + ", user=" + user + ", password=" + password + ", administrator=" + administrator
-				+ "]";
+		String resultado = "";
+		resultado = "Usuario (" + id + ") \nUser:\n" + user + "Password\n" + password + "Administrator=" + administrator
+				+ "   ===> ";
+		for (Mentira mentira : mentiras) {
+			resultado += mentira;
+		}
+		return resultado;
 	}
 
 }

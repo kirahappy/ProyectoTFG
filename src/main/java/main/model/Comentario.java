@@ -52,8 +52,10 @@ public class Comentario {
 		this.comentario = comentario;
 	}
 
+	@Override
 	public String toString() {
-		return "Comentario [id=" + id + ", comentario=" + comentario + "]";
+		return "Comentario " + comentario + " Hecho a la mentira=" + mentira;
 	}
 
+	
 }

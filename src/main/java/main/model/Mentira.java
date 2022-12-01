@@ -3,6 +3,7 @@ package main.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,9 +36,13 @@ public class Mentira {
 
 	@ManyToMany(mappedBy = "mentiras", fetch = FetchType.EAGER)
 	private Set<Usuario> usuarios;
+	
+	@OneToMany(cascade = { CascadeType.MERGE },mappedBy="mentira",fetch=FetchType.EAGER)
+	private Set<Comentario> comentarios;
 
 	public Mentira() {
 		usuarios = new HashSet<Usuario>(); 
+		comentarios = new HashSet<Comentario>(); 
 	}
 
 	public Mentira(String nombre, String textoMentira, String complices, String inocentes) {
@@ -45,6 +51,7 @@ public class Mentira {
 		this.complices = complices;
 		this.inocentes = inocentes;
 		usuarios = new HashSet<Usuario>();
+		comentarios = new HashSet<Comentario>(); 
 	}
 
 	public int getId() {

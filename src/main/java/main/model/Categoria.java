@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Categorias")
 public class Categoria {
-	public enum Categorias {
+	private enum Categorias {
 		AMOR, AMISTAD, FAMILIA, TRABAJO, ESTUDIOS
 
 	};

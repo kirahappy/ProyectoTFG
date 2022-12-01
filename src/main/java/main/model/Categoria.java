@@ -5,22 +5,32 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Categorias")
+@Table(name = "Categorias")
 public class Categoria {
+	public enum Categorias {
+		AMOR, AMISTAD, FAMILIA, TRABAJO, ESTUDIOS
 
-	@Column(name="amor")
-	String amor;
+	};
+
+	@Column(name = "categoria")
+	Categorias categoria;
+
+	public Categoria(Categorias categoria) {
+		this.categoria = categoria;
+	}
+
+	public Categorias getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categorias categoria) {
+		this.categoria = categoria;
+	}
+
+	public String toString() {
+		return "Categoria [categoria=" + categoria + "]";
+	}
 	
-	@Column(name="amistad")
-	String amistad;
 	
-	@Column(name="familia")
-	String familia;
-	
-	@Column(name="trabajo")
-	String trabajo;
-	
-	@Column(name="estudios")
-	String estudios;
-	
+
 }

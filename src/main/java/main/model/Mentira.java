@@ -10,9 +10,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "mentiras")
@@ -40,6 +44,11 @@ public class Mentira {
 	@OneToMany(cascade = { CascadeType.MERGE },mappedBy="mentira",fetch=FetchType.EAGER)
 	private Set<Comentario> comentarios;
 
+	@ManyToOne
+	@JoinColumn(name = "categoria", nullable = true)
+	@JsonIgnore
+	private Categoria categoria;
+	
 	public Mentira() {
 		usuarios = new HashSet<Usuario>(); 
 		comentarios = new HashSet<Comentario>(); 
@@ -95,6 +104,7 @@ public class Mentira {
 	}
 
 	public String toString() {
+		String resultado = "";
 		return "Mentira [id=" + id + ", nombre=" + nombre + ", textoMentira=" + textoMentira + ", complices="
 				+ complices + ", inocentes=" + inocentes + "]";
 	}

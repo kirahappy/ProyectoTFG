@@ -1,10 +1,15 @@
 package main.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,11 +32,19 @@ public class Mentira {
 	@Column(name = "id")
 	private String inocentes; // Son los que NO saben la mentira
 
+	@ManyToMany(mappedBy = "mentiras", fetch = FetchType.EAGER)
+	private Set<Usuario> usuarios;
+
+	public Mentira() {
+		usuarios = new HashSet<Usuario>(); 
+	}
+
 	public Mentira(String nombre, String textoMentira, String complices, String inocentes) {
 		this.nombre = nombre;
 		this.textoMentira = textoMentira;
 		this.complices = complices;
 		this.inocentes = inocentes;
+		usuarios = new HashSet<Usuario>();
 	}
 
 	public int getId() {

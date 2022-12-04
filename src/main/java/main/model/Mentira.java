@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// TODO CAMIBAIR PAQURETE A DAO EL MODEL NO EXISTE
+
 @Entity
 @Table(name = "mentiras")
 public class Mentira {
@@ -35,7 +37,7 @@ public class Mentira {
 	@Column(name = "complices")
 	private String complices; // Son los que saben la mentira aparte del usuario
 
-	@Column(name = "id")
+	@Column(name = "inocentes")
 	private String inocentes; // Son los que NO saben la mentira
 
 	@ManyToMany(mappedBy = "mentiras", fetch = FetchType.EAGER)

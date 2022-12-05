@@ -1,4 +1,4 @@
-package main.model;
+package lieTime.dao;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +30,7 @@ public class Usuario {
 	@Column(name = "administrador")
 	private boolean administrator;
 
-	@ManyToMany
+	@OToMany
 	@JoinTable(name = "usuarios_mentiras", joinColumns = { @JoinColumn(name = "id_usuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_mentira") })
 	private Set<Mentira> mentiras;
@@ -91,14 +91,10 @@ public class Usuario {
 		this.mentiras = mentiras;
 	}
 
+	@Override
 	public String toString() {
-		String resultado = "";
-		resultado = "Usuario (" + id + ") \nUser:\n" + user + "Password\n" + password + "Administrator=" + administrator
-				+ "   ===> ";
-		for (Mentira mentira : mentiras) {
-			resultado += mentira;
-		}
-		return resultado;
+		return "Usuario [id=" + id + ", user=" + user + ", password=" + password + ", administrator=" + administrator
+				+ ", mentiras=" + mentiras + "]";
 	}
 
 }

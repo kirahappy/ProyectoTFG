@@ -1,4 +1,4 @@
-package main.model;
+package lieTime.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

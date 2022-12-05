@@ -1,4 +1,4 @@
-package main.model;
+package lieTime.dao;
 
 import java.util.HashSet;
 import java.util.Set;

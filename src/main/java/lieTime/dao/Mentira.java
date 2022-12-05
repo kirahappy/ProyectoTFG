@@ -1,4 +1,5 @@
-package main.model;
+
+package lieTime.dao;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,20 +41,20 @@ public class Mentira {
 	@Column(name = "inocentes")
 	private String inocentes; // Son los que NO saben la mentira
 
-	@ManyToMany(mappedBy = "mentiras", fetch = FetchType.EAGER)
-	private Set<Usuario> usuarios;
-	
-	@OneToMany(cascade = { CascadeType.MERGE },mappedBy="mentira",fetch=FetchType.EAGER)
+	@ManyToOne(mappedBy = "mentiras", fetch = FetchType.EAGER)
+	private Usuario usuario;
+
+	@OneToMany(cascade = { CascadeType.MERGE }, mappedBy = "mentira", fetch = FetchType.EAGER)
 	private Set<Comentario> comentarios;
 
 	@ManyToOne
 	@JoinColumn(name = "categoria", nullable = true)
 	@JsonIgnore
 	private Categoria categoria;
-	
+
 	public Mentira() {
-		usuarios = new HashSet<Usuario>(); 
-		comentarios = new HashSet<Comentario>(); 
+		usuarios = new HashSet<Usuario>();
+		comentarios = new HashSet<Comentario>();
 	}
 
 	public Mentira(String nombre, String textoMentira, String complices, String inocentes) {
@@ -62,7 +63,7 @@ public class Mentira {
 		this.complices = complices;
 		this.inocentes = inocentes;
 		usuarios = new HashSet<Usuario>();
-		comentarios = new HashSet<Comentario>(); 
+		comentarios = new HashSet<Comentario>();
 	}
 
 	public int getId() {
@@ -75,6 +76,14 @@ public class Mentira {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public void setNombre(String nombre) {
@@ -108,10 +117,9 @@ public class Mentira {
 	@Override
 	public String toString() {
 		String resultado = "";
-		resultado = " Nombre: " + nombre + "\nTexto:\n " + textoMentira + "Complices: \n"
-				+ complices + "Inocentes: \n" + inocentes + " Categoria: " + categoria + " ";
+		resultado = " Nombre: " + nombre + "\nTexto:\n " + textoMentira + "Complices: \n" + complices + "Inocentes: \n"
+				+ inocentes + " Categoria: " + categoria + " ";
 		return resultado;
 	}
 
-	
 }

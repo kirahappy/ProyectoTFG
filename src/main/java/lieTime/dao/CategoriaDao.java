@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
-public class Categoria {
+public class CategoriaDao {
 	private enum Categorias {
 		AMOR, AMISTAD, FAMILIA, TRABAJO, ESTUDIOS
 
@@ -22,15 +22,15 @@ public class Categoria {
 	Categorias categoria;
 
 	@OneToMany(cascade = { CascadeType.MERGE }, mappedBy = "categoria", fetch = FetchType.EAGER)
-	private Set<Mentira> mentiras;
+	private Set<MentiraDao> mentiras;
 
-	public Categoria() {
-		mentiras = new HashSet<Mentira>();
+	public CategoriaDao() {
+		mentiras = new HashSet<MentiraDao>();
 	}
 
-	public Categoria(Categorias categoria) {
+	public CategoriaDao(Categorias categoria) {
 		this.categoria = categoria;
-		mentiras = new HashSet<Mentira>();
+		mentiras = new HashSet<MentiraDao>();
 	}
 
 	public Categorias getCategoria() {
@@ -39,15 +39,6 @@ public class Categoria {
 
 	public void setCategoria(Categorias categoria) {
 		this.categoria = categoria;
-	}
-
-	public String toString() {
-		String resultado = "";
-		resultado = "Categoria: " + categoria + "   ===>";
-		for (Mentira mentira : mentiras) {
-			resultado += mentira;
-		}
-		return resultado;
 	}
 
 }

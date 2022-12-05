@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "mentiras")
-public class Mentira {
+public class MentiraDao {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,29 +41,25 @@ public class Mentira {
 	@Column(name = "inocentes")
 	private String inocentes; // Son los que NO saben la mentira
 
-	@ManyToOne(mappedBy = "mentiras", fetch = FetchType.EAGER)
-	private Usuario usuario;
+	@ManyToOne
+	@JoinColumn(name = "id_usuario", nullable = true)
+	private UsuarioDao usuario;
 
 	@OneToMany(cascade = { CascadeType.MERGE }, mappedBy = "mentira", fetch = FetchType.EAGER)
-	private Set<Comentario> comentarios;
+	private Set<ComentarioDao> comentarios;
 
 	@ManyToOne
 	@JoinColumn(name = "categoria", nullable = true)
 	@JsonIgnore
-	private Categoria categoria;
+	private CategoriaDao categoria;
 
-	public Mentira() {
-		usuarios = new HashSet<Usuario>();
-		comentarios = new HashSet<Comentario>();
+	public MentiraDao() {
+		comentarios = new HashSet<ComentarioDao>();
 	}
 
-	public Mentira(String nombre, String textoMentira, String complices, String inocentes) {
-		this.nombre = nombre;
-		this.textoMentira = textoMentira;
-		this.complices = complices;
-		this.inocentes = inocentes;
-		usuarios = new HashSet<Usuario>();
-		comentarios = new HashSet<Comentario>();
+	public MentiraDao(UsuarioDao usu) {
+		usuario = usu;
+		comentarios = new HashSet<ComentarioDao>();
 	}
 
 	public int getId() {
@@ -78,11 +74,11 @@ public class Mentira {
 		return nombre;
 	}
 
-	public Usuario getUsuario() {
+	public UsuarioDao getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(UsuarioDao usuario) {
 		this.usuario = usuario;
 	}
 
@@ -113,13 +109,4 @@ public class Mentira {
 	public void setInocentes(String inocentes) {
 		this.inocentes = inocentes;
 	}
-
-	@Override
-	public String toString() {
-		String resultado = "";
-		resultado = " Nombre: " + nombre + "\nTexto:\n " + textoMentira + "Complices: \n" + complices + "Inocentes: \n"
-				+ inocentes + " Categoria: " + categoria + " ";
-		return resultado;
-	}
-
 }

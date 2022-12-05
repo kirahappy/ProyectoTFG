@@ -5,17 +5,19 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class UsuarioDao {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,25 +32,11 @@ public class Usuario {
 	@Column(name = "administrador")
 	private boolean administrator;
 
-	@OToMany
-	@JoinTable(name = "usuarios_mentiras", joinColumns = { @JoinColumn(name = "id_usuario") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_mentira") })
-	private Set<Mentira> mentiras;
+	@OneToMany(mappedBy= "usuario", fetch = FetchType.EAGER)
+	private Set<MentiraDao> mentiras;
 
-	public Usuario() {
-		mentiras = new HashSet<Mentira>();
-	}
-
-	public Usuario(String user, String password, boolean administrator) {
-		this.user = user;
-		this.password = password;
-		this.administrator = administrator;
-		mentiras = new HashSet<Mentira>();
-	}
-
-	public Usuario(String user, String password) {
-		this.user = user;
-		this.password = password;
+	public UsuarioDao() {
+		mentiras = new HashSet<MentiraDao>();
 	}
 
 	public int getId() {
@@ -83,11 +71,11 @@ public class Usuario {
 		this.administrator = administrator;
 	}
 
-	public Set<Mentira> getMentiras() {
+	public Set<MentiraDao> getMentiras() {
 		return mentiras;
 	}
 
-	public void setMentiras(Set<Mentira> mentiras) {
+	public void setMentiras(Set<MentiraDao> mentiras) {
 		this.mentiras = mentiras;
 	}
 

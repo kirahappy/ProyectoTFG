@@ -1,6 +1,6 @@
 package main.service;
 
-import lieTime.dao.Mentira;
+import lieTime.dao.MentiraDao;
 import lieTime.repository.MentiraRepository;
 
 public class MentiraService {
@@ -12,7 +12,7 @@ public class MentiraService {
 		this.mentiraRepository = mentiraRepository;
 	}
 
-	public void crearMentira(Mentira mentira) {
+	public void crearMentira(MentiraDao mentira) {
 
 		mentiraRepository.save(mentira);
 	}

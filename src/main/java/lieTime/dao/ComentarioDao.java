@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "comentarios")
-public class Comentario {
+public class ComentarioDao {
 
 	@Id
 	@Column(name = "id")
@@ -26,13 +26,13 @@ public class Comentario {
 	@OneToMany
 	@JoinColumn(name = "id_mentira", nullable = true)
 	@JsonIgnore
-	private Mentira mentira;
+	private MentiraDao mentira;
 
-	public Comentario(Mentira mentira) {
+	public ComentarioDao(MentiraDao mentira) {
 		this.mentira = mentira;
 	}
 
-	public Comentario(String comentario) {
+	public ComentarioDao(String comentario) {
 		this.comentario = comentario;
 	}
 
@@ -52,10 +52,4 @@ public class Comentario {
 		this.comentario = comentario;
 	}
 
-	@Override
-	public String toString() {
-		return "Comentario " + comentario + " Hecho a la mentira=" + mentira;
-	}
-
-	
 }

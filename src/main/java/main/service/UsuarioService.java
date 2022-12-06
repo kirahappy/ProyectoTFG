@@ -1,5 +1,6 @@
 package main.service;
 
+import lieTime.dao.UsuarioDao;
 import lieTime.repository.UsuarioRepository;
 
 public class UsuarioService {
@@ -10,7 +11,7 @@ public class UsuarioService {
 		this.usuarioRepository = usuarioRepository;
 	}
 	
-	public void getUsuarioByUser() {
-		usuarioRepository.findUsuarioByUser(user);
+	public void getUsuarioByUser(UsuarioDao user) {
+		usuarioRepository.findUsuarioByUser(user.getUser());
 	}
 }

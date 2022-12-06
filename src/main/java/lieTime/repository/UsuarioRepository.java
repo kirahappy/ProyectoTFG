@@ -7,8 +7,10 @@ import lieTime.dao.MentiraDao;
 import lieTime.dao.UsuarioDao;
 
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<UsuarioDao, Integer> {
+public interface UsuarioRepository extends JpaRepository<UsuarioDao, Integer> {
 	
 	
-	public UsuarioDao findUsuarioByUserAndAdministrastor(String user, boolean administrator);
+//	public UsuarioDao findUsuarioByUserAndAdministrastor(String user, boolean administrator);
+	
+	public UsuarioDao findUsuarioByUser(String user);
 }

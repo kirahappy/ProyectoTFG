@@ -24,17 +24,21 @@ public class Controller {
 		this.mentiraService = mentiraService;
 		this.usuarioService = usuarioService;
 	}
+	
+	
 
 	@GetMapping(value = "mentiras/crear")
-	public void crearMentira(@PathVariable String usuario, @RequestBody MentiraDao mentira) {
+	public void crearMentira(@PathVariable UsuarioModel usuario, @RequestBody MentiraDao mentira) {
 		
 		
 		//Getter pàra obtener un usuario ya registrado
-		UsuarioModel usuarioModel = usuarioService.getusuarioByUser(usuario);
-		
-				
-		mentira.set(usuarioModel);
-		
+		UsuarioModel usuarioModel = usuarioService.getUsuarioByUser(usuario);			
+//		mentira.getUsuario();
 		mentiraService.crearMentira(mentira);
+	}
+	
+	@GetMapping(value= "mentiras/edit")
+	public void editarMentira() {
+		
 	}
 }

@@ -1,5 +1,6 @@
 package main.service;
 
+import lieTime.dao.UsuarioDao;
 import lieTime.model.UsuarioModel;
 import lieTime.repository.UsuarioRepository;
 

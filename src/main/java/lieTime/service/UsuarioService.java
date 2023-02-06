@@ -1,4 +1,4 @@
-package main.service;
+package lieTime.service;
 
 import lieTime.dao.UsuarioDao;
 import lieTime.model.UsuarioModel;

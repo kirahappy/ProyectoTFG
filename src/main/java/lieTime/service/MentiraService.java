@@ -1,4 +1,4 @@
-package main.service;
+package lieTime.service;
 
 import lieTime.dao.MentiraDao;
 import lieTime.repository.MentiraRepository;

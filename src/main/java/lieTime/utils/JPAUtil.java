@@ -1,4 +1,4 @@
-package main.utils;
+package lieTime.utils;
 
 
 import javax.persistence.EntityManagerFactory;

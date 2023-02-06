@@ -7,5 +7,6 @@ import lieTime.dao.MentiraDao;
 
 @Repository
 public interface MentiraRepository extends JpaRepository<MentiraDao, Integer> {
+	
 
 }

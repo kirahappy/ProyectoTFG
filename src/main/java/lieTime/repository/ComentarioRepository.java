@@ -9,6 +9,6 @@ import lieTime.dao.ComentarioDao;
 public interface ComentarioRepository extends JpaRepository<ComentarioDao, Integer> {
 	public ComentarioDao insertarComentario (ComentarioDao comentario);
 	public List<ComentarioDao> mostrarComentarios();
-	public ComentarioDao eliminarComentarioId(Integer id);
+	public void eliminarComentarioId(Integer id);
 
 }

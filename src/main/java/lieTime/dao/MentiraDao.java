@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lieTime.model.Categoria;
 
 // TODO CAMIBAIR PAQURETE A DAO EL MODEL NO EXISTE
 
@@ -48,10 +52,9 @@ public class MentiraDao {
 	@OneToMany(cascade = { CascadeType.MERGE }, mappedBy = "mentira", fetch = FetchType.EAGER)
 	private Set<ComentarioDao> comentarios;
 
-	@ManyToOne
-	@JoinColumn(name = "categoria", nullable = true)
-	@JsonIgnore
-	private CategoriaDao categoria;
+	@Column(name = "categoria", nullable = true)
+	@Enumerated(value = EnumType.STRING)
+	private Categoria categoria;
 
 	public MentiraDao() {
 		comentarios = new HashSet<ComentarioDao>();

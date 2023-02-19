@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,9 +24,8 @@ public class ComentarioDao {
 	@Column(name = "comentario")
 	private String comentario;
 
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "id_mentira", nullable = true)
-	@JsonIgnore
 	private MentiraDao mentira;
 
 	public ComentarioDao(MentiraDao mentira) {

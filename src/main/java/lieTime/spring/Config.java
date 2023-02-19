@@ -1,10 +1,11 @@
 package lieTime.spring;
 
 import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
 
 import lieTime.repository.MentiraRepository;
-import main.service.MentiraService;
+import lieTime.service.MentiraService;
 
 @Configuration
 public class Config {

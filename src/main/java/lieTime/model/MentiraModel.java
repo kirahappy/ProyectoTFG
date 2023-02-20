@@ -13,12 +13,14 @@ public class MentiraModel {
 
 	private String inocentes; // Son los que NO saben la mentira
 
-	public MentiraModel(String nombre, String textoMentira, String complices, String inocentes) {
+	private Categoria categoria;
+
+	public MentiraModel(String nombre, String textoMentira, String complices, String inocentes, Categoria categoria) {
 		this.nombre = nombre;
 		this.textoMentira = textoMentira;
 		this.complices = complices;
 		this.inocentes = inocentes;
-
+		this.categoria = categoria;
 	}
 
 	public int getId() {
@@ -31,6 +33,10 @@ public class MentiraModel {
 
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getTextoMentira() {
@@ -55,6 +61,14 @@ public class MentiraModel {
 
 	public void setInocentes(String inocentes) {
 		this.inocentes = inocentes;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	@Override

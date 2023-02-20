@@ -63,6 +63,14 @@ public class MentiraDao {
 		comentarios = new HashSet<ComentarioDao>();
 	}
 
+	public MentiraDao(String nombre, String textoMentira, String complices, String inocentes, Categoria categoria) {
+		this.nombre = nombre;
+		this.textoMentira = textoMentira;
+		this.complices = complices;
+		this.inocentes = inocentes;
+		this.categoria = categoria;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -109,5 +117,21 @@ public class MentiraDao {
 
 	public void setInocentes(String inocentes) {
 		this.inocentes = inocentes;
+	}
+
+	public Set<ComentarioDao> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(Set<ComentarioDao> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 }

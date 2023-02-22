@@ -27,7 +27,7 @@ public class MentiraService {
 		mentiraRepository.save(mentira);
 	}
 
-	public MentiraDao insertarNuevaLie(MentiraModel mentira) {
+	public MentiraDao editarNuevaLie(MentiraModel mentira) {
 		MentiraDao nuevaMentira = new MentiraDao(mentira.getNombre(), mentira.getTextoMentira(),
 				mentira.getComplices(), mentira.getInocentes(), mentira.getCategoria());
 		

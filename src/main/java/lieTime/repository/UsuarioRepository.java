@@ -1,5 +1,7 @@
 package lieTime.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,5 +14,5 @@ public interface UsuarioRepository extends JpaRepository<UsuarioDao, Integer> {
 	
 //	public UsuarioDao findUsuarioByUserAndAdministrastor(String user, boolean administrator);
 	
-	public UsuarioDao findUsuarioByUser(String user);
+	public Optional<UsuarioDao> findByUsername(String username);
 }
